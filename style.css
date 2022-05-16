@@ -1,0 +1,12 @@
+.text-primary-2 {
+    color: #0f2b46 !important;
+}
+
+* {
+    color: #0f2b46 !important;
+}
+
+.nav-item .active {
+    border: 1px solid #0c61bb !important;
+    color: #0c61bb !important;
+}
