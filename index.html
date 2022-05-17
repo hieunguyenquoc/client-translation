@@ -83,7 +83,7 @@
                             </button>
                 </div>
                 <div id="box4" class="card p-0" style="max-width: 200px; width: 100%;">
-                    <div class="card-header text-primary-2 font-weight-bold p-3 bg-light d-flex justify-content-center align-items-center" >
+                    <div class="card-header text-primary-2 font-weight-bold p-3 bg-light d-flex justify-content-center align-items-center">
                         <h5 class="card-title mb-0">Lao</h5>
                         <!-- <button id="translate-btn" class="btn btn-outline-info mt-2">
                             Translate
@@ -97,13 +97,25 @@
                 </div>
             </div>
             <div class="card-body border border-1 p-3 mt-3">
-                <label for="formFileMultiple" class="form-label">Upload file to translate</label>
-                <input class="form-control" type="file" id="formFileMultiple" name="formFileMultiple" onclick="uploadFile()" multiple />
-                
-            </div>
-            <div class="mt-4">
+                <!-- <label for="formFileMultiple" class="form-label">Upload file to translate</label>
+                <input class="form-control" type="file" id="formFileMultiple" name="formFileMultiple" onchange="uploadFile()" multiple /> -->
+                <div class="card-wapper">
+                    <h3>Upload Files</h3>
+                    <div class="drop_box">
+                        <header>
+                            <h4>Select File to Translate</h4>
+                        </header>
+                        <p>Files Supported: PDF, TEXT, DOC , DOCX</p>
+                        <input type="file" hidden accept=".doc,.docx,.pdf, .txt" id="formFileMultiple" name="formFileMultiple" style="display:none;" onchange="uploadAndTranslateFile()">
+                        <button class="btn-wapper btn-info">Choose File</button>
+                    </div>
+
+                </div>
+                <div class="mt-4">
                     <div class="" id="loader"></div>
-                  </div>
+                </div>
+            </div>
+
 
             <!-- <div style="width: 47%;">
                     <div id="box4" class="card p-0">
