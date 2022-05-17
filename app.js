@@ -59,45 +59,34 @@ $('#arrowLR').on('click', function() {
         $('#box1 .card-title').html('Vietnamese')
     }
 })
+$('#arrowLR2').on('click', function() {
+    textInp.value = '';
+    $('#box4 .card-body').empty();
+    var data = $('#arrowLR2').attr('data-current')
+    if (data === 'VN-L') {
+        $('#arrowLR2').attr('data-current', 'L-VN')
+        $('#box3 .card-title').html('Lao')
+        $('#box4 .card-title').html('Vietnamese')
+    } else {
+        $('#arrowLR2').attr('data-current', 'VN-L')
+        $('#box4 .card-title').html('Lao')
+        $('#box3 .card-title').html('Vietnamese')
+    }
+})
 
-// function openCity(evt, cityName) {
-//     var i, tabcontent, tablinks;
-//     tabcontent = document.getElementsByClassName("tabcontent");
-//     for (i = 0; i < tabcontent.length; i++) {
-//         tabcontent[i].style.display = "none";
-//     }
-//     tablinks = document.getElementsByClassName("tablinks");
-//     for (i = 0; i < tablinks.length; i++) {
-//         tablinks[i].className = tablinks[i].className.replace(" active", "");
-//     }
-//     document.getElementById(cityName).style.display = "block";
-//     evt.currentTarget.className += " active";
-// }
+$("#translate-btn").on('click', function() { 
+    console.log('Translate file');
+    var blob = new Blob(["This is my first text."], {type: "text/plain;charset=utf-8"});
+    saveAs(blob, "testfile1.txt");
+ });
 
-
-// translateVietLao("xin chào");
-// function getTranslationUrl(text) {
-//     return serverUrl + "?" + "text=" + text;
-// }
-// var inputText = textInp.value;
-
-// function errorHandler(error) {
-//     alert("Sorry,Something is wrong.Please try again after sometime!");
-// }
-
-// function clickHandler() {
-//     console.log(textInp.value);
-//     console.log(getTranslationUrl())
-//     fetch(getTranslationUrl(textInp.value)).then(response => response.json()).then(json => {
-//         output.innerText = json.contents.translated;
-
-//     }).catch(errorHandler)
-// };
-// btn.addEventListener("click", clickHandler);
+$('#pills-profile-tab').on('click', function() {
+     $('#pills-home').css('display','none')
+})
 
 
-
-// there are other methods like
-// creating a DOM element using document.createElement(),
-// or using document.createTextNode() to create textNode,
-// and then insert it using insertBefore() and appendChild(). Explore these pieces and write blogs on it when you understand this
+let photo = document.getElementById("formFileMultiple").files[0];
+let formData = new FormData();
+console.log("photo", photo)
+// formData.append("photo", photo);
+// fetch('/upload/image', {method: "POST", body: formData});
