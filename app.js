@@ -1,6 +1,6 @@
 var textInp = document.querySelector("textarea[name='txtinput']");
 const btn = document.querySelector("#btn");
-
+var loader = $("#loader")
 // var serverUrl="https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json";
 // var serverUrl = "https://api.funtranslations.com/translate/minion.json";
 // var serverUrl = "http://localhost:8000/Translate_Vi_La";
@@ -60,7 +60,16 @@ async function uploadFile() {
     var rs = await fetch(serverUrl, {
         method: "POST",
         body: formData
-    }).then(res => res.json());
+    })
+    .then(() => {
+        loader.addClass('loader__element')
+    })
+    .then(res => {
+        setTimeout(() => {
+            res.json()
+        loader.addClass('')
+        }, 3000)
+    });
     console.log(`rs: `, rs);
     // return rs;
     var blob = new Blob([rs], { type: "text/plain;charset=utf-8" });

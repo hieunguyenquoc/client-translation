@@ -10,3 +10,37 @@
     border: 1px solid #0c61bb !important;
     color: #0c61bb !important;
 }
+
+.nav-item .TEST ~ #pills-home {
+    display: none;
+}
+
+:root {
+    --main-color: #111;
+    --loader-color: #0c61bb;
+    --back-color: #0f2b46;
+    --time: 3s;
+    --size: 10px;
+}
+
+
+
+.loader__element {
+	height: var(--size);
+	width: 100%;
+	background: var(--back-color);
+
+}
+
+.loader__element:before {
+	content: '';
+	display: block;
+	background-color: var(--loader-color);
+	height: var(--size);
+	width: 0;
+  animation: getWidth var(--time) ease-in infinite;
+}
+
+@keyframes getWidth {
+	100% { width: 100%; }
+}
