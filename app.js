@@ -83,6 +83,9 @@ $("#translate-btn").on('click', function() {
 $('#pills-profile-tab').on('click', function() {
      $('#pills-home').css('display','none')
 })
+$('#pills-home-tab').on('click', function() {
+    $('#pills-home').css('display','block')
+})
 
 
 let photo = document.getElementById("formFileMultiple").files[0];
