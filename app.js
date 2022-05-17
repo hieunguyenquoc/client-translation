@@ -44,6 +44,32 @@ async function translateLaoViet() {
     console.log("Hello: ", result);
     $('#box2 .card-body').html(result)
 }
+async function translateViLaoDoc() {
+    var serverUrl = `http://127.0.0.1:8000/Translate_Vi_Lao_Docs/`;
+
+}
+
+async function uploadFile() {
+    var serverUrl = `http://127.0.0.1:8000/Translate_Vi_Lao_Docs/`;
+    //creating form data object and append file into that form data
+    let formData = new FormData();
+    formData.append("file", formFileMultiple.files[0]);
+
+    console.log("test", formData);
+    //network request using POST method of fetch
+    var rs = await fetch(serverUrl, {
+        method: "POST",
+        body: formData
+    }).then(res => res.json());
+    console.log(`rs: `, rs);
+    // return rs;
+    var blob = new Blob([rs], { type: "text/plain;charset=utf-8" });
+    var d = new Date();
+    var extendFile = "result_" + d.getHours() + "_" + d.getMinutes() + "_" + d.getSeconds();
+    console.log("extend:", extendFile);
+    saveAs(blob, `${extendFile}.txt`);
+    // alert('You have successfully upload the file!');
+}
 
 $('#arrowLR').on('click', function() {
     textInp.value = '';
@@ -74,22 +100,15 @@ $('#arrowLR2').on('click', function() {
     }
 })
 
-$("#translate-btn").on('click', function() { 
-    console.log('Translate file');
-    var blob = new Blob(["This is my first text."], {type: "text/plain;charset=utf-8"});
-    saveAs(blob, "testfile1.txt");
- });
+// $("#translate-btn").on('click', function() {
+//     console.log('Translate file');
+//     var blob = new Blob([uploadFile()], { type: "text/plain;charset=utf-8" });
+//     saveAs(blob, "testfile1.txt");
+// });
 
 $('#pills-profile-tab').on('click', function() {
-     $('#pills-home').css('display','none')
+    $('#pills-home').css('display', 'none')
 })
 $('#pills-home-tab').on('click', function() {
-    $('#pills-home').css('display','block')
+    $('#pills-home').css('display', 'block')
 })
-
-
-let photo = document.getElementById("formFileMultiple").files[0];
-let formData = new FormData();
-console.log("photo", photo)
-// formData.append("photo", photo);
-// fetch('/upload/image', {method: "POST", body: formData});
